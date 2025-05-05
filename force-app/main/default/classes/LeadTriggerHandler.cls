@@ -5,6 +5,7 @@ public  class LeadTriggerHandler {
         for(Lead newRecord:newRecords)
         {
             newRecord.Status = 'Working - Contacted';
+            
         }
        
     } 
