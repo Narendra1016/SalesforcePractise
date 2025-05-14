@@ -52,14 +52,45 @@ public class AccountTriggerHandler {
                }
 
             }
-            if(!updateContat.isEmpty())
-            {
-                update updateContat;
-            }
+                if(!updateContat.isEmpty())
+                {
+                    update updateContat;
+                }
         }
         catch(Exception e)
         {
             system.debug(e.getMessage());
         }
     }
+    // Create the number of Contact records based on the 'Number_of_Contacts__c' field value on the Account
+
+        public static void createContact(List<Account> newRecords, map<Id,Account>oldRecords)
+        {
+            List<Contact> conlist = new List<Contact>
+            try{
+                for(Acount acc: newRecords)
+                
+                {
+                      
+                        for(integer i= 1;i<=acc.No_of_Contact__c;i++)
+                        {
+                            Contact con = new Contact();
+                            con.LastName = "Narendra"+i;
+                            con.AccountId = acc.Id;
+                            conlist.add(con);
+                        }
+                           
+
+                       
+                }
+                if(!conList.isEmpty())
+                {
+                    insert conlist;
+                }
+            }
+            catch(Exception e)
+            {
+                system.debug(e.getMessage());
+            }
+        }
 }

@@ -1,4 +1,4 @@
-trigger AccountTrigger on Account (before update,after update) {
+trigger AccountTrigger on Account (before update,after update,after insert) {
 
     if(trigger.isupdate && trigger.isbefore)
     {
@@ -8,5 +8,10 @@ trigger AccountTrigger on Account (before update,after update) {
     {
         AccountTriggerHandler.updateContatWebsite(trigger.new,trigger.oldMap);
     }
+    if((trigger.isupdate || trigger.isinsert) && trigger.isafter  )
+    {
+        AccountTriggerHandler.createContact(trigger.new,trigger.oldMap);
+    }
+    
 
 }
