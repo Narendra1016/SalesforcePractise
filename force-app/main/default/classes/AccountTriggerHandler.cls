@@ -65,4 +65,33 @@ public class AccountTriggerHandler {
      // Create the number of Contact records based on the 'Number_of_Contacts__c' field value on the Account
 
      
+     public static void createContats(List<Account> newRecords)
+     {
+        List<Contact> conList = new List<Contact>();
+        try{
+            for(Account newRecord : newRecords)
+            {
+                system.debug(newRecord);
+               if(newRecord.No_of_Contact__c !=null )
+               {
+                  for(Integer i=1 ; i<= newRecord.No_of_Contact__c; i++)
+                  {
+                    Contact con = new Contact();
+                    con.LastName = newRecord.Name;
+                    con.AccountId = newRecord.Id;
+                    conList.add(con);
+                  }
+               }
+            }
+
+            if(!conList.isEmpty())
+            {
+                insert conList;
+            }
+        }
+        catch(exception e)
+        {
+            system.debug(e.getMessage());
+        }
+     }
 }

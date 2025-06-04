@@ -8,5 +8,9 @@ trigger AccountTrigger on Account (before update,after update,after insert) {
     {
         AccountTriggerHandler.updateContatWebsite(trigger.new,trigger.oldMap);
     }
+    if(trigger.isafter && trigger.isinsert )
+    {
+        AccountTriggerHandler.createContats(trigger.new);
+    }
 
 }
