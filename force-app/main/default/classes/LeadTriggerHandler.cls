@@ -6,7 +6,7 @@ public  class LeadTriggerHandler {
             {
                 for(Lead newRecord:newRecords)
                 {
-                    newRecord.Status = 'Working - Contacted';
+                    
                     if(newRecord.Industry == 'Healthcare')
                     {
                         newRecord.LeadSource = 'Purchased List';
