@@ -1,4 +1,4 @@
-trigger LeadTrigger on Lead (before update,after insert) {
+trigger LeadTrigger on Lead (before update,after insert ,before delete) {
 
     if(trigger.isupdate && trigger.isbefore)
     {
@@ -8,6 +8,9 @@ trigger LeadTrigger on Lead (before update,after insert) {
     {
         LeadTriggerHandler.createTask(trigger.new);
     }
-
+    if(trigger.isbefore && trigger.isdelete)
+    {
+        LeadTriggerHandler.showError(trigger.old);
+    }
 
 }

@@ -47,6 +47,25 @@ public  class LeadTriggerHandler {
         }
         
     }
+
+    public static void showError(List <Lead> oldRecords)
+    {
+        try{
+
+            for(Lead oldRec : oldRecords)
+            {
+                if(oldRec.Status == 'Working - Contacted')
+                {
+                    oldRec.addError('Ypu can not delete working-contated lead');
+                }
+            }
+
+        }
+        catch(Exception e)
+        {
+            system.debug(e.getMessage());
+        }
+    }
     
    
 }
