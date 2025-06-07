@@ -17,6 +17,12 @@ public class AccountTriggerHandler {
             {
                 acc.Rating = 'Hot';
             }
+            else if(acc.Copy_Billing_To_shipping__c)
+            {
+                acc.ShippingCity = acc.BillingCity;
+                acc.ShippingCountry = acc.BillingCountry;
+                acc.ShippingState = acc.BillingState;
+            }
 
         }
     }
