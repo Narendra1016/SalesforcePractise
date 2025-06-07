@@ -5,6 +5,22 @@
  */
 public class AccountTriggerHandler {
 
+
+    // update Rating
+
+    public static void updateRating(List<Account> newRecords)
+    {
+   
+        for(Account acc:newRecords)
+        {
+            if(acc.Industry != null && acc.Industry=='Media')
+            {
+                acc.Rating = 'Hot';
+            }
+
+        }
+    }
+
     // Do not allow user to set Ownership to 'Private' if Industry is 'Agriculture' and Type is 'Prospect'
 
     public static void showError(List<Account> newRecords, Map<Id, Account> oldRecords)

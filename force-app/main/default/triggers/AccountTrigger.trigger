@@ -1,4 +1,4 @@
-trigger AccountTrigger on Account (before update,after update,after insert) {
+trigger AccountTrigger on Account (before update,after update,after insert,before insert) {
 
     if(trigger.isupdate && trigger.isbefore)
     {
@@ -11,6 +11,10 @@ trigger AccountTrigger on Account (before update,after update,after insert) {
     if(trigger.isafter && trigger.isinsert )
     {
         AccountTriggerHandler.createContats(trigger.new);
+    }
+    if(trigger.isbefore && trigger.isInsert)
+    {
+        AccountTriggerHandler.updateRating(trigger.new);
     }
 
 }
